@@ -4,13 +4,13 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "s3" {
-  	bucket = "bucket923-by-tf"
+	bucket = "bucket923-by-tf"
 }
 
 resource "aws_s3_bucket_policy" "s3-bucket-policy" {
     bucket = aws_s3_bucket.s3.id
     policy = jsonencode({
-    	"Version": "2012-10-17",
+      "Version": "2012-10-17",
       "Statement": [
         {
           "Sid": "Allow-specific-ip_addresses"
@@ -32,7 +32,7 @@ resource "aws_s3_bucket_policy" "s3-bucket-policy" {
 }
 
 resource "aws_s3_object" "upload-file" {
-		bucket       = aws_s3_bucket.s3.id
+	bucket       = aws_s3_bucket.s3.id
   	key          = "index.html"
   	source       = "./index.html"
   	content_type = "text/html"   //with the help
